@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<configuration xmlns:xdt="http://schemas.microsoft.com/XML-Document-Transform">
+	<appSettings xdt:Transform="InsertIfMissing">
+		<add xdt:Transform="InsertIfMissing" xdt:Locator="Match(key)" key="SC.Recaptcha_SiteKey" value="!!__YOUR_SITEKEY_HERE__!!" />
+		<add xdt:Transform="InsertIfMissing" xdt:Locator="Match(key)" key="SC.Recaptcha_Secret" value="!!__YOUR_SECRET_HERE__!!" />
+		<add xdt:Transform="InsertIfMissing" xdt:Locator="Match(key)" key="SC.Recaptcha_UseRemoteIP" value="true" />
+	</appSettings>
+</configuration>

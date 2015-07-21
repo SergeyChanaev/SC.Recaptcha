@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<configuration xmlns:xdt="http://schemas.microsoft.com/XML-Document-Transform">
+	<appSettings>
+		<add key="SC.Recaptcha_SiteKey" xdt:Locator="Match(key)" xdt:Transform="Remove" />
+		<add key="SC.Recaptcha_Secret" xdt:Locator="Match(key)" xdt:Transform="Remove" />
+		<add key="SC.Recaptcha_UseRemoteIP" xdt:Locator="Match(key)" xdt:Transform="Remove" />
+	</appSettings>
+</configuration>
