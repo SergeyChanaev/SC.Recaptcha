@@ -38,19 +38,19 @@ namespace SC.Recaptcha.MVC
 						switch (error)
 						{
 							case ("missing-input-secret"):
-								filterContext.Controller.ViewData.ModelState.AddModelError("SC.Recaptcha.MissingInputSecret", Strings.ResponseError_MissingInputSecret);
+								filterContext.Controller.ViewData.ModelState.AddModelError("SC.Recaptcha", Strings.ResponseError_MissingInputSecret);
 								break;
 							case ("invalid-input-secret"):
-								filterContext.Controller.ViewData.ModelState.AddModelError("SC.Recaptcha.InvalidInputSecret", Strings.ResponseError_InvalidInputSecret);
+								filterContext.Controller.ViewData.ModelState.AddModelError("SC.Recaptcha", Strings.ResponseError_InvalidInputSecret);
 								break;
 							case ("missing-input-response"):
-								filterContext.Controller.ViewData.ModelState.AddModelError("SC.Recaptcha.MissingInputResponse", Strings.ResponseError_MissingInputResponse);
+								filterContext.Controller.ViewData.ModelState.AddModelError("SC.Recaptcha", Strings.ResponseError_MissingInputResponse);
 								break;
 							case ("invalid-input-response"):
-								filterContext.Controller.ViewData.ModelState.AddModelError("SC.Recaptcha.InvalidInputResponse", Strings.ResponseError_InvalidInputResponse);
+								filterContext.Controller.ViewData.ModelState.AddModelError("SC.Recaptcha", Strings.ResponseError_InvalidInputResponse);
 								break;
 							default:
-								filterContext.Controller.ViewData.ModelState.AddModelError("SC.Recaptcha.GeneralError", Strings.ResponseError_GeneralError);
+								filterContext.Controller.ViewData.ModelState.AddModelError("SC.Recaptcha", Strings.ResponseError_GeneralError);
 								break;
 						}
 						
@@ -61,7 +61,7 @@ namespace SC.Recaptcha.MVC
 			}
 			catch (Exception ex)
 			{
-				filterContext.Controller.ViewData.ModelState.AddModelError("SC.Recaptcha.Error", Strings.ResponseError_GeneralError);
+				filterContext.Controller.ViewData.ModelState.AddModelError("SC.Recaptcha", Strings.ResponseError_GeneralError);
 			}
 		}
 	}
