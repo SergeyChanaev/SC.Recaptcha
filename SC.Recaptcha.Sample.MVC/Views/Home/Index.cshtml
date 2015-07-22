@@ -1,0 +1,17 @@
+﻿@using SC.Recaptcha.MVC
+<h1>Are you a robot?</h1>
+
+<p>Proof if you aren't!</p>
+
+@using (Html.BeginForm("Index", "Home", FormMethod.Post))
+{
+	@Html.ValidationSummary(false)
+	@Html.Recaptcha()
+
+	//To display localized Recaptcha control - pass two-letter language code as parameter like below:
+	//@Html.Recaptcha("de")
+
+	<br />
+	<input type="submit" value="Click Me" />
+}
+
