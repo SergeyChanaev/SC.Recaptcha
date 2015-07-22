@@ -104,5 +104,14 @@ namespace SC.Recaptcha.Resources {
                 return ResourceManager.GetString("ResponseError_MissingInputSecret", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you&apos;re not a robot?.
+        /// </summary>
+        public static string ResponseError_ValidationFailed {
+            get {
+                return ResourceManager.GetString("ResponseError_ValidationFailed", resourceCulture);
+            }
+        }
     }
 }

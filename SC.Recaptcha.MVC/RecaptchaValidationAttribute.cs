@@ -1,5 +1,5 @@
 ﻿using System;
-using System.Configuration;
+using System.Collections.Generic;
 using System.Web.Mvc;
 
 using SC.Recaptcha.Resources;
@@ -20,41 +20,38 @@ namespace SC.Recaptcha.MVC
 			try
 			{
 				string response = filterContext.HttpContext.Request.Form["g-recaptcha-response"];
-				bool useRemoteIP;
-				string remoteIP = string.Empty;
-
-				if (!string.IsNullOrEmpty(ConfigurationManager.AppSettings["SC.Recaptcha_UseRemoteIP"])
-					&& bool.TryParse(ConfigurationManager.AppSettings["SC.Recaptcha_UseRemoteIP"], out useRemoteIP)
-					&& useRemoteIP)
-					remoteIP = filterContext.HttpContext.Request.UserHostAddress;
+				string remoteIP = filterContext.HttpContext.Request.UserHostAddress;
 
 				RecaptchaValidationService rvs = new RecaptchaValidationService();
 				RecaptchaResponse result = rvs.Validate(response, remoteIP);
 
 				if (!result.Success)
 				{
+					filterContext.Controller.ViewData.ModelState.AddModelError("SC.Recaptcha", Strings.ResponseError_ValidationFailed);
+
+					List<string> errors = new List<string>();
 					foreach (string error in result.ErrorCodes)
 					{
 						switch (error)
 						{
 							case ("missing-input-secret"):
-								filterContext.Controller.ViewData.ModelState.AddModelError("SC.Recaptcha", Strings.ResponseError_MissingInputSecret);
+								errors.Add(Strings.ResponseError_MissingInputSecret);
 								break;
 							case ("invalid-input-secret"):
-								filterContext.Controller.ViewData.ModelState.AddModelError("SC.Recaptcha", Strings.ResponseError_InvalidInputSecret);
+								errors.Add(Strings.ResponseError_InvalidInputSecret);
 								break;
 							case ("missing-input-response"):
-								filterContext.Controller.ViewData.ModelState.AddModelError("SC.Recaptcha", Strings.ResponseError_MissingInputResponse);
+								errors.Add(Strings.ResponseError_MissingInputResponse);
 								break;
 							case ("invalid-input-response"):
-								filterContext.Controller.ViewData.ModelState.AddModelError("SC.Recaptcha", Strings.ResponseError_InvalidInputResponse);
+								errors.Add(Strings.ResponseError_InvalidInputResponse);
 								break;
 							default:
-								filterContext.Controller.ViewData.ModelState.AddModelError("SC.Recaptcha", Strings.ResponseError_GeneralError);
+								errors.Add(Strings.ResponseError_GeneralError);
 								break;
 						}
-						
 					}
+					filterContext.HttpContext.Items["SC.Recaptcha.Errors"] = errors;
 				}
 
 				base.OnActionExecuting(filterContext);

@@ -13,6 +13,41 @@ namespace SC.Recaptcha
 	{
 		private const string ApiBaseUrl = "www.google.com/recaptcha/api";
 
+		#region Properties
+
+		/// <summary>
+		/// Secret Key.
+		/// </summary>
+		public string Secret { get; private set; }
+
+		/// <summary>
+		/// Indicates whether application should also pass user IP address to Google Recaptcha Service to perform validation.
+		/// </summary>
+		public bool UseRemoteIP { get; private set; }
+
+		#endregion
+
+		#region Constructors
+
+		/// <summary>
+		/// The class <see cref="T:SC.Recaptcha.RecaptchaValidationService"/> constructor.
+		/// </summary>
+		public RecaptchaValidationService()
+		{
+			if (string.IsNullOrEmpty(ConfigurationManager.AppSettings["SC.Recaptcha_Secret"]))
+				throw new ConfigurationErrorsException("Application Setting \"SC.Recaptcha_Secret\" must be configured!");
+			Secret = ConfigurationManager.AppSettings["SC.Recaptcha_Secret"];
+
+			bool useRemoteIP = false;
+			if (!string.IsNullOrEmpty(ConfigurationManager.AppSettings["SC.Recaptcha_UseRemoteIP"]))
+				bool.TryParse(ConfigurationManager.AppSettings["SC.Recaptcha_UseRemoteIP"], out useRemoteIP);
+			UseRemoteIP = useRemoteIP;
+		}
+
+		#endregion
+
+		#region Methods
+
 		/// <summary>
 		/// Verification of the user's response.
 		/// </summary>
@@ -31,16 +66,13 @@ namespace SC.Recaptcha
 		/// <returns>The method returns an <see cref="T:SC.Recaptcha.RecaptchaResponse"/> instance.</returns>
 		public RecaptchaResponse Validate(string response, string remoteIP)
 		{
-			if (ConfigurationManager.AppSettings["SC.Recaptcha_Secret"] == null)
-				throw new ConfigurationErrorsException("Application Setting \"SC.Recaptcha_Secret\" must be configured!");
-
 			string url = string.Format(
 				"https://{0}/siteverify?secret={1}&response={2}",
 				ApiBaseUrl,
-				ConfigurationManager.AppSettings["SC.Recaptcha_Secret"],
+				Secret,
 				response);
 
-			if (!string.IsNullOrEmpty(remoteIP))
+			if (!string.IsNullOrEmpty(remoteIP) && UseRemoteIP)
 				url += string.Format("&remoteip={0}", remoteIP);
 
 			try
@@ -66,5 +98,7 @@ namespace SC.Recaptcha
 
 			return null;
 		}
+
+		#endregion
 	}
 }

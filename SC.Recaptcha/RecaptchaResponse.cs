@@ -19,14 +19,6 @@ namespace SC.Recaptcha
 		/// Returns the possible error codes occurred during validation.
 		/// </summary>
 		[JsonProperty("error-codes")]
-		public ICollection<string> ErrorCodes { get; set; }
-
-		/// <summary>
-		/// The class <see cref="T:SC.Recaptcha.RecaptchaResponse"/> constructor.
-		/// </summary>
-		public RecaptchaResponse()
-		{
-			ErrorCodes = new HashSet<string>();
-		}
+		public IList<string> ErrorCodes { get; set; }
 	}
 }

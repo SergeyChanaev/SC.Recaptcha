@@ -10,13 +10,18 @@
 		<iconUrl>https://www.gstatic.com/recaptcha/api2/logo_48.png</iconUrl>
 		<requireLicenseAcceptance>false</requireLicenseAcceptance>
 		<description>$description$</description>
-		<releaseNotes>Initial Release</releaseNotes>
 		<copyright>Copyright © Sergey Chanaev 2015</copyright>
 		<tags>reCAPTCHA ASP.NET Validation Google</tags>
 		<dependencies>
 			<dependency id="Microsoft.AspNet.WebApi.Client" version="5.0.0"/>
 			<dependency id="Newtonsoft.Json" version="6.0.4"/>
 		</dependencies>
+		<releaseNotes>
+			Release v1.0.3
+			* Change: RecaptchaResponse.ErrorCodes now has type IList&lt;string&gt;. Redundant constructor has been removed
+			* Change: RecaptchaValidationService refactoring
+			* Change: ValidateRecaptchaAttribute refactoring
+		</releaseNotes>
 	</metadata>
 	<files>
 		<file src="..\NuGet\SC.Recaptcha\Web.config.install.xdt" target="content\web.config.install.xdt"/>
