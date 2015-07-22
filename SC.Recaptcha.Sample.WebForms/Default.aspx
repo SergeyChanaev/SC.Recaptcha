@@ -12,7 +12,7 @@
 	<form id="frmMain" runat="server">
 		<p><asp:Label ID="lblError" runat="server" Font-Bold="True" ForeColor="Red" /></p>
 
-		<div class="g-recaptcha" data-sitekey="6Lc4BAoTAAAAALpdVA7A84uERfe9Uh3npNLLrY9X"></div>
+		<div class="g-recaptcha" data-sitekey="6Ld1MQoTAAAAAPZbyzS8zz1aaUug4at6bna2vJ7B"></div>
 
 		<%-- Browser default language will be used to display Recaptcha control--%>
 		<script async="true" defer="true" src="https://www.google.com/recaptcha/api.js"></script>
