@@ -4,17 +4,27 @@ using System.Web.Mvc;
 namespace SC.Recaptcha.MVC
 {
 	/// <summary>
-	/// TODO
+	/// Provides support for displaying a Google Recaptcha validation widget.
 	/// </summary>
 	public static class RecaptchaHtmlHelper
 	{
 		/// <summary>
-		/// TODO
+		/// Displays a Google Recaptcha validation widget.
 		/// </summary>
-		/// <param name="htmlHelper"></param>
-		/// <param name="language"></param>
-		/// <returns></returns>
-		public static MvcHtmlString Recaptcha(this HtmlHelper htmlHelper, string language = null)
+		/// <param name="htmlHelper">The HTML helper instance that this method extends.</param>
+		/// <returns>A &lt;div&gt; and &lt;script&gt; elements that contains necessary markups.</returns>
+		public static MvcHtmlString Recaptcha(this HtmlHelper htmlHelper)
+		{
+			return Recaptcha(htmlHelper, null);
+		}
+
+		/// <summary>
+		/// Displays a Google Recaptcha validation widget.
+		/// </summary>
+		/// <param name="htmlHelper">The HTML helper instance that this method extends.</param>
+		/// <param name="language">The two-letter ISO language code.</param>
+		/// <returns>A &lt;div&gt; and &lt;script&gt; elements that contains necessary markups.</returns>
+		public static MvcHtmlString Recaptcha(this HtmlHelper htmlHelper, string language)
 		{
 			if (ConfigurationManager.AppSettings["SC.Recaptcha_SiteKey"] == null)
 				throw new ConfigurationErrorsException("Application Setting \"SC.Recaptcha_SiteKey\" must be configured!");

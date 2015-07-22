@@ -12,14 +12,14 @@
 		<description>$description$</description>
 		<releaseNotes>Initial Release</releaseNotes>
 		<copyright>Copyright © Sergey Chanaev 2015</copyright>
-		<tags>reCAPTCHA ASP.NET Validation</tags>
+		<tags>reCAPTCHA ASP.NET Validation Google</tags>
 		<dependencies>
 			<dependency id="Microsoft.AspNet.WebApi.Client" version="5.0.0"/>
 			<dependency id="Newtonsoft.Json" version="6.0.4"/>
 		</dependencies>
 	</metadata>
 	<files>
-		<file src="..\NuGet\SC.Recaptcha\Web.config.install.xdt" target="content\web.config.install.xdt" />
-		<file src="..\NuGet\SC.Recaptcha\Web.config.uninstall.xdt" target="content\web.config.uninstall.xdt" />
+		<file src="..\NuGet\SC.Recaptcha\Web.config.install.xdt" target="content\web.config.install.xdt"/>
+		<file src="..\NuGet\SC.Recaptcha\Web.config.uninstall.xdt" target="content\web.config.uninstall.xdt"/>
 	</files>
 </package>

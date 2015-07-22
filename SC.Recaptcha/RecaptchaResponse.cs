@@ -5,24 +5,24 @@ using Newtonsoft.Json;
 namespace SC.Recaptcha
 {
 	/// <summary>
-	/// Response from Google
+	/// Response returned from Google Recaptcha Service.
 	/// </summary>
 	public class RecaptchaResponse
 	{
 		/// <summary>
-		/// TODO
+		/// Indicates whether validation has been successfully completed.
 		/// </summary>
 		[JsonProperty("success")]
 		public bool Success { get; set; }
 
 		/// <summary>
-		/// TODO
+		/// Returns the possible error codes occurred during validation.
 		/// </summary>
 		[JsonProperty("error-codes")]
 		public ICollection<string> ErrorCodes { get; set; }
 
 		/// <summary>
-		/// TODO
+		/// The class <see cref="T:SC.Recaptcha.RecaptchaResponse"/> constructor.
 		/// </summary>
 		public RecaptchaResponse()
 		{

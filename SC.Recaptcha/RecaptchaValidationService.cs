@@ -7,19 +7,29 @@ using Newtonsoft.Json;
 namespace SC.Recaptcha
 {
 	/// <summary>
-	/// TODO
+	/// Recaptcha Validation Service class which interacts with Google Recaptcha Service.
 	/// </summary>
 	public class RecaptchaValidationService
 	{
 		private const string ApiBaseUrl = "www.google.com/recaptcha/api";
 
 		/// <summary>
-		/// Perform validation
+		/// Verification of the user's response.
 		/// </summary>
-		/// <param name="response"></param>
-		/// <param name="remoteIP"></param>
-		/// <returns></returns>
-		public RecaptchaResponse Validate(string response, string remoteIP = null)
+		/// <param name="response">The user response token provided by the reCAPTCHA control.</param>
+		/// <returns>The method returns an <see cref="T:SC.Recaptcha.RecaptchaResponse"/> instance.</returns>
+		public RecaptchaResponse Validate(string response)
+		{
+			return Validate(response, null);
+		}
+
+		/// <summary>
+		/// Verification of the user's response.
+		/// </summary>
+		/// <param name="response">The user response token provided by the reCAPTCHA control.</param>
+		/// <param name="remoteIP">The user's IP address.</param>
+		/// <returns>The method returns an <see cref="T:SC.Recaptcha.RecaptchaResponse"/> instance.</returns>
+		public RecaptchaResponse Validate(string response, string remoteIP)
 		{
 			if (ConfigurationManager.AppSettings["SC.Recaptcha_Secret"] == null)
 				throw new ConfigurationErrorsException("Application Setting \"SC.Recaptcha_Secret\" must be configured!");
@@ -47,11 +57,11 @@ namespace SC.Recaptcha
 			}
 			catch (HttpRequestException ex)
 			{
-				//TODO:
+				//TODO: Add HttpRequestException handling logic here.
 			}
 			catch (Exception ex)
 			{
-				//TODO:
+				//TODO: Add Exception handling logic here.
 			}
 
 			return null;

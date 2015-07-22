@@ -12,17 +12,14 @@
 		<description>$description$</description>
 		<releaseNotes>Initial Release</releaseNotes>
 		<copyright>Copyright © Sergey Chanaev 2015</copyright>
-		<tags>reCAPTCHA ASP.NET Validation</tags>
+		<tags>reCAPTCHA ASP.NET MVC Validation Google</tags>
 		<dependencies>
-			<dependency id="SC.Recaptcha" version="1.0.0.0"/>
-			<dependency id="Microsoft.AspNet.Mvc" version="5.0.0" />
-			<dependency id="Microsoft.AspNet.Razor" version="3.0.0" />
-			<dependency id="Microsoft.AspNet.WebPages" version="3.0.0" />
-			<dependency id="Microsoft.Web.Infrastructure" version="1.0.0.0" />
+			<dependency id="SC.Recaptcha" version="1.0.0"/>
+			<dependency id="Microsoft.AspNet.Mvc" version="5.0.0"/>
 		</dependencies>
 	</metadata>
 	<files>
-		<file src="..\NuGet\SC.Recaptcha.MVC\Web.config.install.xdt" target="content\web.config.install.xdt" />
-		<file src="..\NuGet\SC.Recaptcha.MVC\Web.config.uninstall.xdt" target="content\web.config.uninstall.xdt" />
+		<file src="..\NuGet\SC.Recaptcha.MVC\Web.config.install.xdt" target="content\web.config.install.xdt"/>
+		<file src="..\NuGet\SC.Recaptcha.MVC\Web.config.uninstall.xdt" target="content\web.config.uninstall.xdt"/>
 	</files>
 </package>

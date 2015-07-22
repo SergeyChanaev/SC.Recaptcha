@@ -7,14 +7,14 @@ using SC.Recaptcha.Resources;
 namespace SC.Recaptcha.MVC
 {
 	/// <summary>
-	/// TODO
+	/// Represents an attribute that is enables Google Recaptcha Service validation.
 	/// </summary>
 	public class ValidateRecaptchaAttribute : ActionFilterAttribute
 	{
 		/// <summary>
-		/// TODO
+		/// Overrides default <see cref="M:System.Web.Mvc.ActionFilterAttribute.OnActionExecuting(System.Web.Mvc.ActionExecutingContext)"/> method by adding custom validation logic.
 		/// </summary>
-		/// <param name="filterContext"></param>
+		/// <param name="filterContext">Filter Context</param>
 		public override void OnActionExecuting(ActionExecutingContext filterContext)
 		{
 			try
@@ -61,7 +61,7 @@ namespace SC.Recaptcha.MVC
 			}
 			catch (Exception ex)
 			{
-				filterContext.Controller.ViewData.ModelState.AddModelError("SC.Recaptcha", Strings.ResponseError_GeneralError);
+				//TODO: Add Exception handling logic here.
 			}
 		}
 	}
